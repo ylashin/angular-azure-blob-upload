@@ -1,0 +1,27 @@
+{
+  "name": "angular-azure-blob-upload",
+  "version": "0.0.1",
+  "authors": [
+    "Zepfiro"
+  ],
+  "description": "Fork of original project by kinstephen",
+  "keywords": [
+    "javascript",
+    "azure"
+  ],
+  "license": "MIT",
+  "homepage": "http://www.zepfiro.com",
+  "private": false,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+  },
+  "resolutions": {
+    "angular": "^1.0.8"
+  }
+}
