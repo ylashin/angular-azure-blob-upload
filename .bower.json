@@ -4,7 +4,9 @@
   "license": "MIT",
   "main": "./angular-blob-upload.js",
   "ignore": [],
-  "dependencies": {},
+  "dependencies": {
+    "angular": "^1.0.8"
+  },
   "homepage": "https://github.com/lucafabbri/angular-azure-blob-upload",
   "_release": "0.0.1",
   "_resolution": {
