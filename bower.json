@@ -1,27 +1,18 @@
 {
   "name": "angular-azure-blob-upload",
   "version": "0.0.1",
-  "authors": [
-    "Zepfiro"
-  ],
-  "description": "Fork of original project by kinstephen",
-  "keywords": [
-    "javascript",
-    "azure"
-  ],
   "license": "MIT",
-  "homepage": "http://www.zepfiro.com",
-  "private": false,
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ],
-  "dependencies": {
+  "main": "./angular-blob-upload.js",
+  "ignore": [],
+  "dependencies": {},
+  "homepage": "https://github.com/lucafabbri/angular-azure-blob-upload",
+  "_release": "0.0.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.0.1",
+    "commit": "51534c771a6921293f9010fe46b95f2c954daa32"
   },
-  "resolutions": {
-    "angular": "^1.0.8"
-  }
+  "_source": "git://github.com/lucafabbri/angular-azure-blob-upload.git",
+  "_target": "^0.0.1",
+  "_originalSource": "angular-azure-blob-upload"
 }
