@@ -13,14 +13,14 @@
   "dependencies": {
     "angular": "^1.0.8"
   },
-  "homepage": "https://github.com/ylashin/angular-azure-blob-upload",
+  "homepage": "https://github.com/ylashin/angular-azure-blob-upload-media",
   "_release": "0.0.1",
   "_resolution": {
     "type": "version",
     "tag": "v0.0.1",
     "commit": "51534c771a6921293f9010fe46b95f2c954daa32"
   },
-  "_source": "git://github.com/ylashin/angular-azure-blob-upload.git",
+  "_source": "git://github.com/ylashin/angular-azure-blob-upload-media.git",
   "_target": "^0.0.1",
   "_originalSource": "angular-azure-blob-upload",
   "authors": [
