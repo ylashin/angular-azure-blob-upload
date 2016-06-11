@@ -1,0 +1,36 @@
+{
+  "name": "angular-azure-blob-upload-media",
+  "version": "0.0.1",
+  "license": "MIT",
+  "main": "./angular-blob-upload.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.0.8"
+  },
+  "homepage": "https://github.com/ylashin/angular-azure-blob-upload",
+  "_release": "0.0.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.0.1",
+    "commit": "51534c771a6921293f9010fe46b95f2c954daa32"
+  },
+  "_source": "git://github.com/ylashin/angular-azure-blob-upload.git",
+  "_target": "^0.0.1",
+  "_originalSource": "angular-azure-blob-upload",
+  "authors": [
+    "Yousry Mohamed <yousry.mohamed@readify.net>"
+  ],
+  "description": "Angular library to upload blobs to azure storage accounts, supporting also media services",
+  "keywords": [
+    "azure",
+    "blob",
+    "upload",
+    "media"
+  ]
+}
