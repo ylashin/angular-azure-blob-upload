@@ -21,7 +21,9 @@
           progress: // progress callback function,
           complete: // complete callback function,
           error: // error callback function,
-          blockSize: // Use this to override the DefaultBlockSize
+          blockSize: // Use this to override the DefaultBlockSize,
+          fileName: //filename to use
+          mediaUpload : //send it as false for normal blob uploads and true for media services uploads
         } */
         var upload = function (config) {
             var state = initializeState(config);
@@ -29,7 +31,18 @@
             var reader = new FileReader();
             reader.onloadend = function (evt) {
                 if (evt.target.readyState == FileReader.DONE && !state.cancelled) { // DONE == 2
-                    var uri = state.fileUrl + '&comp=block&blockid=' + state.blockIds[state.blockIds.length - 1];
+                    var uri = "";
+                    if (state.mediaUpload)
+                    {
+                        var first = state.baseUrl.substr(0, state.baseUrl.indexOf('?'));
+                        var second = state.baseUrl.substr(state.baseUrl.indexOf('?') + 1);
+                        uri = first + '/' + state.fileName + '?' + second + '&comp=block&blockid=' + state.blockIds[state.blockIds.length - 1];                        
+                    }
+                    else
+                    {
+                        uri = state.fileUrl + '&comp=block&blockid=' + state.blockIds[state.blockIds.length - 1];                   
+                    }
+                    
                     var requestData = new Uint8Array(evt.target.result);
 
                     $log.log(uri);
@@ -90,6 +103,9 @@
             }
 
             $log.log("total blocks = " + numberOfBlocks);
+            
+            if (config.mediaUpload)
+                config.sasToken = "";
 
             return {
                 maxBlockSize: maxBlockSize, //Each file will be split in 256 KB.
@@ -107,7 +123,9 @@
                 progress: config.progress,
                 complete: config.complete,
                 error: config.error,
-                cancelled: false
+                cancelled: false,
+                fileName: config.fileName || file.name,
+                mediaUpload = config.mediaUpload || false
             };
         };
 
@@ -135,8 +153,22 @@
         };
 
         var commitBlockList = function (state) {
-            var uri = state.fileUrl + '&comp=blocklist';
+            var uri = "";
+            var skipAuthorization = false;
+            if(state.mediaUpload)
+            {
+                var first = state.baseUrl.substr(0, state.baseUrl.indexOf('?'));
+                var second = state.baseUrl.substr(state.baseUrl.indexOf('?') + 1);
+                var uri = first + '/' + state.fileName + '?' + second + '&comp=blocklist';            
+            }
+            else
+            {
+                uri = state.fileUrl + '&comp=blocklist';
+                skipAuthorization = true;
+            }
+            
             $log.log(uri);
+            
 
             var requestBody = '<?xml version="1.0" encoding="utf-8"?><BlockList>';
             for (var i = 0; i < state.blockIds.length; i++) {
@@ -149,7 +181,8 @@
             {
                 headers: {
                     'x-ms-blob-content-type': state.file.type,
-                }
+                },
+                skipAuthorization: skipAuthorization
             }).success(function (data, status, headers, config) {
                 $log.log(data);
                 $log.log(status);
