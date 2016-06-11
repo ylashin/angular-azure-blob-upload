@@ -55,6 +55,7 @@ The config object has the following properties
   complete: // complete callback function,
   error: // error callback function,
   blockSize: // Use this to override the DefaultBlockSize,
+  fileName: // filename to use in case of media uploads
   mediaUpload : //send it as false for normal blob uploads and true for media services uploads
 }
 ```
