@@ -2,6 +2,8 @@
  * AngularJS Azure blob upload service with http post and progress.
  * @author  Stephen Brannan - twitter: @kinstephen
  * @version 1.0.1
+ * =======================================
+ * Updates to allow media services upload by : Yousry Mohamed, ylashin78@hotmail.com
  */
 (function () {
 
@@ -32,11 +34,13 @@
             reader.onloadend = function (evt) {
                 if (evt.target.readyState == FileReader.DONE && !state.cancelled) { // DONE == 2
                     var uri = "";
+                    var skipAuthorization = false;
                     if (state.mediaUpload)
                     {
                         var first = state.baseUrl.substr(0, state.baseUrl.indexOf('?'));
                         var second = state.baseUrl.substr(state.baseUrl.indexOf('?') + 1);
-                        uri = first + '/' + state.fileName + '?' + second + '&comp=block&blockid=' + state.blockIds[state.blockIds.length - 1];                        
+                        uri = first + '/' + state.fileName + '?' + second + '&comp=block&blockid=' + state.blockIds[state.blockIds.length - 1];
+                        skipAuthorization = true;                        
                     }
                     else
                     {
@@ -48,6 +52,7 @@
                     $log.log(uri);
                     $http.put(uri, requestData,
                         {
+                            skipAuthorization: skipAuthorization,
                             headers: {
                                 'x-ms-blob-type': 'BlockBlob',
                                 'Content-Type': state.file.type,
@@ -125,7 +130,7 @@
                 error: config.error,
                 cancelled: false,
                 fileName: config.fileName || file.name,
-                mediaUpload = config.mediaUpload || false
+                mediaUpload : config.mediaUpload
             };
         };
 
@@ -159,12 +164,12 @@
             {
                 var first = state.baseUrl.substr(0, state.baseUrl.indexOf('?'));
                 var second = state.baseUrl.substr(state.baseUrl.indexOf('?') + 1);
-                var uri = first + '/' + state.fileName + '?' + second + '&comp=blocklist';            
+                var uri = first + '/' + state.fileName + '?' + second + '&comp=blocklist';
+                skipAuthorization = true;
             }
             else
             {
-                uri = state.fileUrl + '&comp=blocklist';
-                skipAuthorization = true;
+                uri = state.fileUrl + '&comp=blocklist';                
             }
             
             $log.log(uri);
