@@ -64,7 +64,13 @@
                             state.bytesUploaded += requestData.length;
 
                             var percentComplete = ((parseFloat(state.bytesUploaded) / parseFloat(state.file.size)) * 100).toFixed(2);
-                            if (state.progress) state.progress(percentComplete, data, status, headers, config);
+                            if (state.progress) 
+                                state.progress(
+                                {
+                                    percentComplete : percentComplete, 
+                                    bytesUploaded : parseInt(bytesUploaded) , 
+                                    fileSize : parseInt(state.file.size) 
+                                });
 
                             uploadFileInBlocks(reader, state);
                         })

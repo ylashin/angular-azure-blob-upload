@@ -51,7 +51,7 @@ The config object has the following properties
   sasToken: // Shared access signature querystring key/value prefixed with ?,
   // do not send in case of azure media services (will be ignored)
   file: // File object using the HTML5 File API,
-  progress: // progress callback function,
+  progress: // progress callback function, starting v0.0.4 returns an object with bytesUploaded, fileSize & percentComplete,
   complete: // complete callback function,
   error: // error callback function,
   blockSize: // Use this to override the DefaultBlockSize,
