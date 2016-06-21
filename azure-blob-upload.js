@@ -68,7 +68,7 @@
                                 state.progress(
                                 {
                                     percentComplete : percentComplete, 
-                                    bytesUploaded : parseInt(bytesUploaded) , 
+                                    bytesUploaded : parseInt(state.bytesUploaded) , 
                                     fileSize : parseInt(state.file.size) 
                                 });
 

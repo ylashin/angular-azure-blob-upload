@@ -1,6 +1,6 @@
 {
   "name": "angular-azure-blob-upload-media",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "license": "MIT",
   "main": "./angular-blob-upload.js",
   "ignore": [
@@ -14,14 +14,14 @@
     "angular": "^1.0.8"
   },
   "homepage": "https://github.com/ylashin/angular-azure-blob-upload-media",
-  "_release": "0.0.4",
+  "_release": "0.0.5",
   "_resolution": {
     "type": "version",
-    "tag": "v0.0.4",
+    "tag": "v0.0.5",
     "commit": "51534c771a6921293f9010fe46b95f2c954daa32"
   },
   "_source": "git://github.com/ylashin/angular-azure-blob-upload-media.git",
-  "_target": "^0.0.4",
+  "_target": "^0.0.5",
   "_originalSource": "angular-azure-blob-upload-media",
   "authors": [
     "Yousry Mohamed <ylashin78@hotmail.com>"
